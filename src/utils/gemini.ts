@@ -53,13 +53,18 @@ export const promtGenerateReason = ({ myName, targetName, reason, style, languag
 Kamu adalah pembuat alasan yang kreatif.
 
 Tujuan:
-- Nama Pengirim: ${myName}
-- Nama Penerima: ${targetName}
+- Nama Pengirim: ${myName || '- Tidak ada nama diberikan.'}
+- Nama Penerima: ${targetName || '- Tidak ada nama diberikan.'}
 - Alasan: ${reasonPrompt}
 - Gaya: ${stylePrompt}
 
 Aturan:
-- Jika Nama Pengirim dan Nama Penerima kosong / "" maka jangan sebutkan namanya sama sekali dan jangan mengarang namanya.
+- Jika Nama Pengirim tidak kosong, sebutkan nama tersebut secara natural di dalam alasan.
+- Jika Nama Penerima tidak kosong, sebutkan nama tersebut secara natural di dalam alasan.
+- Jika hanya salah satu nama yang diisi, gunakan hanya nama tersebut dan jangan membuat nama lainnya.
+- Jika kedua nama kosong (""), jangan menyebut nama siapa pun.
+- Jangan pernah mengubah ejaan nama yang diberikan.
+- Jangan mengarang nama baru.
 - Langsung tulis alasannya saja.
 - Gunakan bahasa ${languageName}.
 - Panjang 1-3 kalimat.
