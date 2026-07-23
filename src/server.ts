@@ -2,12 +2,18 @@ import e, { NextFunction, Request, Response } from 'express';
 import 'dotenv/config';
 import { response } from './utils/response.js';
 import ReasonRouter from './routes/reason.route.js';
-
+import cors from 'cors';
 const app = e();
 const HOST = process.env.HOST || '0.0.0.0';
 const PORT = Number(process.env.PORT) || 5051;
 
 app.use(e.json());
+app.use(
+	cors({
+		origin: ['http://localhost:5173', 'http://localhost:3000'],
+		credentials: true,
+	}),
+);
 
 // main routes
 app.use('/reason', ReasonRouter);
