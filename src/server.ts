@@ -1,8 +1,11 @@
-import e, { NextFunction, Request, Response } from 'express';
 import 'dotenv/config';
+import e, { NextFunction, Request, Response } from 'express';
 import { response } from './utils/response.js';
 import ReasonRouter from './routes/reason.route.js';
 import cors from 'cors';
+import { ConnectDB } from './configs/db.js';
+
+await ConnectDB();
 const app = e();
 const HOST = process.env.HOST || '0.0.0.0';
 const PORT = Number(process.env.PORT) || 5051;
