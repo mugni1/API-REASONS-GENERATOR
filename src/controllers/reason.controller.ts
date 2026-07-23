@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { response } from '../utils/response.js';
 import { generateReasonV1WithFallback, generateReasonV2WithFallback } from '../utils/gemini.js';
 import { generateReasonV1Validate, generateReasonV2Validate } from '../validations/reason.js';
+import { createReasonService } from '../services/reason.service.js';
 
 export const generateReasonV1 = async (req: Request, res: Response) => {
 	// body
@@ -44,6 +45,16 @@ export const generateReasonV2 = async (req: Request, res: Response) => {
 	try {
 		const text = await generateReasonV2WithFallback(data);
 		const cleaned = text.replace(/```json/g, '').replace(/```/g, '');
+		const results = await createReasonService({ ...data, reason: cleaned });
+
+		if (!results) {
+			return response({
+				res,
+				status: 500,
+				message: 'Failed to save reason',
+			});
+		}
+
 		return response({
 			res,
 			status: 201,

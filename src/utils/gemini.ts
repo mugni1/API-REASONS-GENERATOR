@@ -95,7 +95,7 @@ export async function generateReasonV2WithFallback(payload: GenerateReasonV2Payl
 	}
 	throw lastError;
 }
-export const promtGenerateReasonV2 = ({ myName, targetName, scenario, style, language }: GenerateReasonV2Payload) => {
+export const promtGenerateReasonV2 = ({ maker, target, scenario, style, language }: GenerateReasonV2Payload) => {
 	const scenarioPrompt = {
 		school: 'Terlambat/tidak bisa datang ke sekolah.',
 		work: 'Terlambat/tidak bisa datang ke kantor/tempat kerja.',
@@ -117,8 +117,8 @@ export const promtGenerateReasonV2 = ({ myName, targetName, scenario, style, lan
 Kamu adalah pembuat alasan yang kreatif.
 
 Tujuan:
-- Nama Pengirim: ${myName || '- Tidak ada nama diberikan.'}
-- Nama Penerima: ${targetName || '- Tidak ada nama diberikan.'}
+- Nama Pengirim: ${maker || '- Tidak ada nama diberikan.'}
+- Nama Penerima: ${target || '- Tidak ada nama diberikan.'}
 - Skenario: ${scenarioPrompt}
 - Gaya: ${stylePrompt}
 
