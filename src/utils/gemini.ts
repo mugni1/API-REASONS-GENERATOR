@@ -59,7 +59,7 @@ Tujuan:
 - Gaya: ${stylePrompt}
 
 Aturan:
-- Sebutkan Nama Pengirim dan Nama Penerima jika tidak "-".
+- Jika Nama Pengirim dan Nama Penerima kosong / "" maka jangan sebutkan namanya sama sekali dan jangan mengarang namanya.
 - Langsung tulis alasannya saja.
 - Gunakan bahasa ${languageName}.
 - Panjang 1-3 kalimat.

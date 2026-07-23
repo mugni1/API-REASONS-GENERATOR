@@ -1,12 +1,12 @@
 import z from 'zod';
 
 export const generateReasonValidate = z.object({
-	myName: z.string('my name is required').max(20, 'maximum my name must have 20 character').optional().default('-'),
+	myName: z.string('my name is required').max(20, 'maximum my name must have 20 character').optional().default(''),
 	targetName: z
 		.string('target name is required')
 		.max(20, 'maximum target name must have 20 character')
 		.optional()
-		.default('-'),
+		.default(''),
 	language: z
 		.enum(['id', 'en', 'jp'], {
 			error: "language must be 'id', 'en', or 'jp'",
