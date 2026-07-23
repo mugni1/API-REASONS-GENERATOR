@@ -3,7 +3,7 @@ import { response } from '../utils/response.js';
 import { generateReasonWithFallback } from '../utils/gemini.js';
 import { generateReasonValidate } from '../validations/reason.js';
 
-export const generateReason = async (req: Request, res: Response) => {
+export const generateReasonV1 = async (req: Request, res: Response) => {
 	// body
 	const { data, success, error } = generateReasonValidate.safeParse(req.body);
 	if (!success) {
